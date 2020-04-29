@@ -49,6 +49,7 @@ const SignupScreen = ({navigation}) => {
         onChangeText={(fullName) => setFullName(fullName)}
         value={fullName}
         placeholder="Full name"
+        autoCapitalize="words"
       />
       <TextInput
         style={styles.input}
