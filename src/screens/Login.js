@@ -48,6 +48,9 @@ const LoginScreen = ({navigation}) => {
         onChangeText={(email) => setEmail(email)}
         value={email}
         placeholder="Email"
+        keyboardType="email-address"
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <TextInput
         style={styles.input}
@@ -55,6 +58,8 @@ const LoginScreen = ({navigation}) => {
         value={password}
         placeholder="Password"
         secureTextEntry
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <View style={styles.button}>
         <Button title="Log in" disabled={!email || !password} />

@@ -40,7 +40,6 @@ const SignupScreen = ({navigation}) => {
   const [fullName, setFullName] = useState(null);
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [confirmPassword, setConfirmPassword] = useState(null);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -56,6 +55,9 @@ const SignupScreen = ({navigation}) => {
         onChangeText={(email) => setEmail(email)}
         value={email}
         placeholder="Email"
+        keyboardType="email-address"
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <TextInput
         style={styles.input}
@@ -63,19 +65,11 @@ const SignupScreen = ({navigation}) => {
         value={password}
         placeholder="Password"
         secureTextEntry
-      />
-      <TextInput
-        style={styles.input}
-        onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
-        value={confirmPassword}
-        placeholder="Confirm password"
-        secureTextEntry
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <View style={styles.button}>
-        <Button
-          title="Sign up"
-          disabled={!fullName || !email || !password || !confirmPassword}
-        />
+        <Button title="Sign up" disabled={!fullName || !email || !password} />
       </View>
       <View style={styles.button}>
         <Button title="Log in" onPress={() => navigation.navigate('Login')} />
