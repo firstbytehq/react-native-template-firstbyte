@@ -12,7 +12,7 @@ import {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
   },
@@ -35,51 +35,34 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 10,
   },
-  forgotPassword: {
-    textDecorationLine: 'underline',
-    marginBottom: 20,
-    textAlign: 'right',
-  },
 });
 
-const LoginScreen = ({navigation}) => {
+const ForgotPassword = ({navigation}) => {
   const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Log in</Text>
+      <Text style={styles.title}>Forgot password</Text>
       <TextInput
         style={styles.input}
         onChangeText={(email) => setEmail(email)}
         value={email}
-        placeholder="Email"
+        placeholder="Valid email address"
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
       />
-      <TextInput
-        style={styles.input}
-        onChangeText={(password) => setPassword(password)}
-        value={password}
-        placeholder="Password"
-        secureTextEntry
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
-      <Text
-        style={styles.forgotPassword}
-        onPress={() => navigation.navigate('ForgotPassword')}>
-        Forgot password?
-      </Text>
       <View style={styles.button}>
-        <Button title="Log in" disabled={!email || !password} />
+        <Button title="Submit" disabled={!email} />
       </View>
       <View style={styles.button}>
-        <Button title="Sign up" onPress={() => navigation.navigate('Signup')} />
+        <Button
+          title="Back to Log in"
+          onPress={() => navigation.navigate('Login')}
+        />
       </View>
     </SafeAreaView>
   );
 };
 
-export default LoginScreen;
+export default ForgotPassword;

@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import LoginScreen from 'ReactNativeStarterKit/src/screens/Login';
 import SignupScreen from 'ReactNativeStarterKit/src/screens/Signup';
+import ForgotPassword from 'ReactNativeStarterKit/src/screens/ForgotPassword';
 
 const App: () => React$Node = () => {
   const Stack = createStackNavigator();
@@ -18,6 +19,11 @@ const App: () => React$Node = () => {
         <Stack.Screen
           name="Signup"
           component={SignupScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ForgotPassword"
+          component={ForgotPassword}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
