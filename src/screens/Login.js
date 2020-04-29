@@ -8,6 +8,9 @@ import {
   TextInput,
   Button,
 } from 'react-native';
+import {connect} from 'react-redux';
+
+import {login} from 'ReactNativeStarterKit/src/reducer';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({navigation, login}) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
@@ -73,7 +76,11 @@ const LoginScreen = ({navigation}) => {
         Forgot password?
       </Text>
       <View style={styles.button}>
-        <Button title="Log in" disabled={!email || !password} />
+        <Button
+          title="Log in"
+          //disabled={!email || !password}
+          onPress={() => login()}
+        />
       </View>
       <View style={styles.button}>
         <Button title="Sign up" onPress={() => navigation.navigate('Signup')} />
@@ -82,4 +89,4 @@ const LoginScreen = ({navigation}) => {
   );
 };
 
-export default LoginScreen;
+export default connect(null, {login})(LoginScreen);
