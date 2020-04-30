@@ -6,7 +6,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 import {Provider, connect} from 'react-redux';
 import {createStore} from 'redux';
-import {composeWithDevTools} from 'redux-devtools-extension';
 
 import {
   LoginScreen,
@@ -18,7 +17,7 @@ import {
 } from 'ReactNativeStarterKit/src/screens';
 import reducer from 'ReactNativeStarterKit/src/reducer';
 
-const store = createStore(reducer, composeWithDevTools());
+const store = createStore(reducer);
 
 const Routers = ({isSignedIn}) => {
   const Stack = createStackNavigator();
