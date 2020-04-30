@@ -43,33 +43,66 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'right',
   },
+  error: {
+    color: 'red',
+    fontSize: 12,
+    marginBottom: 20,
+  },
 });
 
-const LoginScreen = ({navigation, login}) => {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+const LoginScreen = ({navigation, login, user}) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  const onPress = () => {
+    if (email !== user.email) {
+      setEmailError(true);
+    }
+    if (password !== user.password) {
+      setPasswordError(true);
+    }
+    if (email === user.email && password === user.password) {
+      setEmailError(false);
+      setPasswordError(false);
+      login();
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Log in</Text>
       <TextInput
         style={styles.input}
-        onChangeText={(email) => setEmail(email)}
+        onChangeText={(email) => {
+          setEmail(email);
+          setEmailError(false);
+        }}
         value={email}
         placeholder="Email"
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
       />
+      {emailError && (
+        <Text style={styles.error}>
+          The email address that you've entered doesn't match any account
+        </Text>
+      )}
       <TextInput
         style={styles.input}
-        onChangeText={(password) => setPassword(password)}
+        onChangeText={(password) => {
+          setPassword(password);
+          setPasswordError(false);
+        }}
         value={password}
         placeholder="Password"
         secureTextEntry
         autoCapitalize="none"
         autoCorrect={false}
       />
+      {passwordError && <Text style={styles.error}>Incorrect password</Text>}
       <Text
         style={styles.forgotPassword}
         onPress={() => navigation.navigate('ForgotPassword')}>
@@ -78,8 +111,8 @@ const LoginScreen = ({navigation, login}) => {
       <View style={styles.button}>
         <Button
           title="Log in"
-          //disabled={!email || !password}
-          onPress={() => login()}
+          disabled={!email || !password}
+          onPress={onPress}
         />
       </View>
       <View style={styles.button}>
@@ -89,4 +122,6 @@ const LoginScreen = ({navigation, login}) => {
   );
 };
 
-export default connect(null, {login})(LoginScreen);
+const mapStateToProps = ({user}) => ({user});
+
+export default connect(mapStateToProps, {login})(LoginScreen);
