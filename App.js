@@ -23,6 +23,21 @@ const Routers = ({isSignedIn}) => {
   const Stack = createStackNavigator();
   const Tab = createBottomTabNavigator();
 
+  const HomeScreen = () => (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} options={{title: 'Home'}} />
+    </Stack.Navigator>
+  );
+  const ProfileScreen = () => (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{title: 'Profile'}}
+      />
+    </Stack.Navigator>
+  );
+
   return (
     <NavigationContainer>
       {isSignedIn ? (
@@ -45,9 +60,9 @@ const Routers = ({isSignedIn}) => {
             activeTintColor: '#c2047f',
             inactiveTintColor: 'gray',
           }}>
-          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Search" component={Search} />
-          <Tab.Screen name="Profile" component={Profile} />
+          <Tab.Screen name="Profile" component={ProfileScreen} />
         </Tab.Navigator>
       ) : (
         <Stack.Navigator initialRouteName="Login">
