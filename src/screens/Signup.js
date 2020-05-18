@@ -10,7 +10,7 @@ import {
   Button,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import {signup} from 'ReactNativeStarterKit/src/reducer';
+import {signup} from '../reducer';
 
 const styles = StyleSheet.create({
   container: {

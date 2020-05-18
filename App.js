@@ -14,8 +14,8 @@ import {
   Home,
   Search,
   Profile,
-} from 'ReactNativeStarterKit/src/screens';
-import reducer from 'ReactNativeStarterKit/src/reducer';
+} from './src/screens';
+import reducer from './src/reducer';
 
 const store = createStore(reducer);
 
