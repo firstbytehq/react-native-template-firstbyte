@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 
-import {login} from 'ReactNativeStarterKit/src/reducer';
+import {login} from '../reducer';
 
 const styles = StyleSheet.create({
   container: {

@@ -1,9 +1,9 @@
-import LoginScreen from 'ReactNativeStarterKit/src/screens/Login';
-import SignupScreen from 'ReactNativeStarterKit/src/screens/Signup';
-import ForgotPassword from 'ReactNativeStarterKit/src/screens/ForgotPassword';
+import LoginScreen from './Login';
+import SignupScreen from './Signup';
+import ForgotPassword from './ForgotPassword';
 
-import Home from 'ReactNativeStarterKit/src/screens/Home';
-import Search from 'ReactNativeStarterKit/src/screens/Search';
-import Profile from 'ReactNativeStarterKit/src/screens/Profile';
+import Home from './Home';
+import Search from './Search';
+import Profile from './Profile';
 
 export {LoginScreen, SignupScreen, ForgotPassword, Home, Search, Profile};

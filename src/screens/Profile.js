@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-import {logout} from 'ReactNativeStarterKit/src/reducer';
+import {logout} from '../reducer';
 
 const styles = StyleSheet.create({
   container: {
